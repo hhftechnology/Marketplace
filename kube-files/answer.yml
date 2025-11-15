@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: apache-answer
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-answer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-answer
+  template:
+    metadata:
+      labels:
+        app: apache-answer
+    spec:
+      containers:
+        - name: apache-answer
+          image: apache/answer:latest
+          volumeMounts:
+            - mountPath: /data
+              name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: apache-answer
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-answer
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: apache-answer
+  type: ClusterIP
