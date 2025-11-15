@@ -1,0 +1,16 @@
+services:
+  prefetcharr:
+    image: phueber/prefetcharr:latest
+    container_name: prefetcharr
+    environment:
+      - MEDIA_SERVER_TYPE=jellyfin
+      - MEDIA_SERVER_URL=insert
+      - MEDIA_SERVER_API_KEY=insert
+      - SONARR_URL=insert
+      - SONARR_API_KEY=insert
+      - LOG_DIR=/log
+      - RUST_LOG=prefetcharr=debug
+      - INTERVAL=900
+      - REMAINING_EPISODES=2
+    volumes:
+      - /PREFETCHARR_LOGS:/log

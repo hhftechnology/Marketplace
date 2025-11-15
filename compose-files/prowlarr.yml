@@ -1,0 +1,12 @@
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /PROWLARR_CONFIG:/config
+    network_mode: host
+    restart: unless-stopped

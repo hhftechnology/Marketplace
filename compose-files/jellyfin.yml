@@ -1,0 +1,15 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: uid:gid
+    network_mode: 'host'
+    volumes:
+      - /JELLYFIN_CONFIG:/config
+      - /JELLYFIN_CACHE:/cache
+      - type: bind
+        source: /path/to/media
+        target: /media
+    restart: 'unless-stopped'
+    environment:
+      - JELLYFIN_PublishedServerUrl=http://example.com

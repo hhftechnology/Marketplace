@@ -1,0 +1,12 @@
+services:
+  dashy:
+    image: lissy93/dashy
+    container_name: Dashy
+    volumes:
+      - /DASHY_CONFIG/conf.yml:/app/user-data/conf.yml
+      - /DASHY_ICONS:/app/public/item-icons/icons
+    ports:
+      - 8080:8080
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

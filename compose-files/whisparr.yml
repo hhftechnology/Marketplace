@@ -1,0 +1,15 @@
+services:
+  whisparr:
+    container_name: whisparr
+    image: ghcr.io/hotio/whisparr:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Etc/UTC
+    volumes:
+      - /WHISPARR_CONFIG:/config
+      - /WHISPARR_TV:/tv-whisparr
+      - /WHISPARR_DOWNLOADS:/downloads
+    network_mode: host
+    restart: unless-stopped

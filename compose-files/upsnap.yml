@@ -1,0 +1,16 @@
+services:
+  upsnap:
+    container_name: upsnap
+    image: ghcr.io/seriousm4x/upsnap:latest
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - /UPSNAP_DATA:/app/pb_data
+    environment:
+      - TZ=Etc/UTC
+      - UPSNAP_INTERVAL=*/10 * * * * *
+      - UPSNAP_SCAN_RANGE=192.168.0.0/24
+      - UPSNAP_SCAN_TIMEOUT=500ms
+      - UPSNAP_PING_PRIVILEGED=true
+      - UPSNAP_WEBSITE_TITLE=Upsnap
+    entrypoint: /bin/sh -c "./upsnap serve --http 0.0.0.0:8080"

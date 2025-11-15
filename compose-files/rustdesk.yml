@@ -1,0 +1,19 @@
+services:
+  rustdesk-id-server:
+    container_name: rustdesk-id-server
+    image: rustdesk/rustdesk-server:latest
+    command: hbbs
+    volumes:
+      - /RUSTDESK_DATA:/root
+    network_mode: "host"
+    depends_on:
+      - rustdesk-relay-server
+    restart: unless-stopped
+  rustdesk-relay-server:
+    container_name: rustdesk-relay-server
+    image: rustdesk/rustdesk-server:latest
+    command: hbbr
+    volumes:
+      - /RUSTDESK_DATA:/root
+    network_mode: "host"
+    restart: unless-stopped

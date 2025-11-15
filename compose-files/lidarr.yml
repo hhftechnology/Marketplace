@@ -1,0 +1,14 @@
+services:
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+    volumes:
+      - /LIDARR_CONFIG:/config
+      - /LIDARR_MUSIC:/music
+      - /LIDARR_DOWNLOADING:/downloads
+    network_mode: host
+    restart: unless-stopped

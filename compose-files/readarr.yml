@@ -1,0 +1,14 @@
+services:
+  readarr:
+    image: linuxserver/radarr:latest
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - /READARR_CONFIG:/config
+      - /READARR_BOOKS:/books
+      - /READARR_DOWNLOADS:/downloads
+    network_mode: host
+    restart: unless-stopped
