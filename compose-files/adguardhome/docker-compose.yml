@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp" # DNS
+      - "53:53/udp" # DNS
+      - "67:67/udp" # DHCP Server
+      - "68:68/tcp" # DHCP Client
+      - "853:853/tcp" # DNS over TLS, DNS-over-QUIC
+      - "853:853/udp" # DNS over TLS, DNS-over-QUIC
+      - "6060:6060/tcp" # HTTP (pprof)
+    volumes:
+      - adguardhome-work:/opt/adguardhome/work
+      - adguardhome-conf:/opt/adguardhome/conf
+
+volumes:
+  adguardhome-work: {}
+  adguardhome-conf: {}
