@@ -1,0 +1,14 @@
+# nginx service
+# Image: nginx:latest
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-80}:80" # HTTP port
+    volumes:
+      - ./config:/etc/nginx/conf.d # Nginx configuration
+    environment:
+      - NGINX_HOST=${NGINX_HOST}
+      - NGINX_PORT=${NGINX_PORT}
