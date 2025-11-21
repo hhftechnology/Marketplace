@@ -1,0 +1,27 @@
+# redis service
+# Image: redis:6.0.7
+services:
+  redis:
+    image: redis:6.0.7
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis_volume_data:/data  # Redis data persistence
+    ports:
+      - "${REDIS_PORT:-6379}:6379"  # Redis default port
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
+    command: redis-server --appendonly yes
+  redis_insight:
+    image: redislabs/redisinsight:1.14.0
+    container_name: redis_insight
+    restart: unless-stopped
+    ports:
+      - "${REDIS_INSIGHT_PORT:-8001}:8001"  # Redis Insight web UI
+    volumes:
+      - redis_insight_volume_data:/db  # Redis Insight data
+
+volumes:
+  redis_volume_data:
+  redis_insight_volume_data:
+

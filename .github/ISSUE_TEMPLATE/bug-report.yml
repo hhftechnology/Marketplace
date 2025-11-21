@@ -11,9 +11,20 @@ body:
 
   - type: input
     attributes:
-      label: Template Name
-      description: Which template is experiencing the bug?
-      placeholder: "e.g: Adguard, Appwrite, Plausible, etc."
+      label: Service/Template Name
+      description: Which service or template is experiencing the bug?
+      placeholder: "e.g: nginx, redis, adguard, etc."
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Structure Type
+      description: Which structure format is this service using?
+      options:
+        - "Flat file (compose-files/service-name.yml)"
+        - "Folder structure (compose-files/services/service-name/)"
+        - "Not sure"
     validations:
       required: true
 
