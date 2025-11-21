@@ -1,5 +1,5 @@
 name: Template Bug Report
-description: Report a bug in one of our open source templates (Adguard, Appwrite, etc.)
+description: Report a bug in one of our open source templates (Supabase, Appwrite, etc.)
 labels: ["bug"]
 body:
   - type: markdown
@@ -7,24 +7,13 @@ body:
       value: |
         Before opening a new issue, please search existing issues to see if this bug has already been reported.
         
-        This template is specifically for bugs in our open source templates like Adguard, Appwrite, and others.
+        This template is specifically for bugs in our open source templates like Supabase, Appwrite, and others.
 
   - type: input
     attributes:
-      label: Service/Template Name
-      description: Which service or template is experiencing the bug?
-      placeholder: "e.g: nginx, redis, adguard, etc."
-    validations:
-      required: true
-
-  - type: dropdown
-    attributes:
-      label: Structure Type
-      description: Which structure format is this service using?
-      options:
-        - "Flat file (compose-files/service-name.yml)"
-        - "Folder structure (compose-files/services/service-name/)"
-        - "Not sure"
+      label: Template Name
+      description: Which template is experiencing the bug?
+      placeholder: "e.g: Supabase, Appwrite, Plausible, etc."
     validations:
       required: true
 
@@ -32,7 +21,7 @@ body:
     attributes:
       label: Relevant Logs of the Error
       description: |
-        **IMPORTANT:** Go to the logs tab in your Compose Logs and take a screenshot of the error.
+        **IMPORTANT:** Please provide clear error logs from your deployment environment.
         Please be clear and include the full error message. You can also paste text logs here.
       placeholder: |
         Please attach a clear screenshot of the error logs from the logs tab.
@@ -69,7 +58,8 @@ body:
       render: bash
       placeholder: |
         Operating System: Ubuntu 20.04
-        Compose version: 2.40.3
+        Docker Version: [e.g., 24.0.0]
+        Docker Compose Version: [e.g., 2.20.0]
         VPS Provider: DigitalOcean, Hetzner, etc.
         Template Version: [if known]
         Browser: Chrome, Firefox, etc. [if relevant]

@@ -2,136 +2,48 @@ name: New Template Request
 description: Suggest a new template for the project
 labels: ["template"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Before submitting, please review the [README.md](https://github.com/hhftechnology/Marketplace/blob/main/README.md) to understand the repository structure and submission guidelines.
-
   - type: input
     attributes:
-      label: Service Name
-      description: Provide a clear and descriptive name for the service/template
-      placeholder: "e.g: nginx, redis, postgres, etc."
+      label: Template Name
+      description: Provide a clear and descriptive name for the template
+      placeholder: "e.g: Supabase, Appwrite, etc."
     validations:
       required: true
       
-  - type: dropdown
+  - type: input
     attributes:
-      label: Structure Preference
-      description: Choose the structure format for this service
-      options:
-        - "Flat file (compose-files/service-name.yml)"
-        - "Folder structure (compose-files/services/service-name/)"
-        - "No preference"
+      label: Template URL
+      description: Link to the repository or resource where the template is located
+      placeholder: "https://github.com/username/repo"
     validations:
       required: true
       
-  - type: textarea
+  - type: input
     attributes:
-      label: Docker Compose Configuration
-      description: |
-        Paste your complete `docker-compose.yml` configuration here.
-        
-        **Guidelines:**
-        - Include inline comments (ScaleTail style) for clarity
-        - Use `${VARIABLE_NAME}` syntax for configurable values
-        - Use descriptive volume placeholders (e.g., `/WORK_DIR` instead of absolute paths)
-        - Set timezone to `Etc/UTC` by default
-      placeholder: |
-        ```yaml
-        services:
-          service-name:
-            image: service:latest
-            container_name: service-name
-            restart: unless-stopped
-            ports:
-              - "${PORT:-8080}:8080"  # Service port
-            environment:
-              - SERVICE_VAR=${SERVICE_VAR}
-        ```
-    validations:
-      required: true
-
-  - type: textarea
-    attributes:
-      label: Template Metadata (Optional - Folder Structure Only)
-      description: |
-        If using folder structure and the service needs template variables, domain configuration, or custom mounts, provide the `template.toml` content here.
-        
-        See examples in `compose-files/services/nginx/template.toml` or `compose-files/services/redis/template.toml`
-      placeholder: |
-        ```toml
-        [variables]
-        main_domain = "${domain}"
-        service_port = "80"
-
-        [config]
-        [[config.domains]]
-        serviceName = "service-name"
-        port = 80
-        host = "${main_domain}"
-        path = "/"
-        ```
+      label: Docker Compose Link
+      description: Link to docker-compose.yml file or Docker documentation (optional) but would be helpful
+      placeholder: "https://github.com/username/repo/blob/main/docker-compose.yml"
     validations:
       required: false
 
   - type: textarea
     attributes:
-      label: Environment Variables Example (Optional - Folder Structure Only)
-      description: |
-        If using folder structure and the service has environment variables, provide the `.env.example` content here.
-        
-        See examples in the service folders for the format.
+      label: Resources
+      description: List the resources, links, or any other information that would be helpful to know about the template
       placeholder: |
-        ```bash
-        # Service Configuration
-        SERVICE=service-name
-        IMAGE_URL=service:latest
-        SERVICEPORT=8080
-
-        # Template Variables
-        MAIN_DOMAIN=example.com
-        ```
+        - Link to the template
+        - Link to the documentation
+        - Link to the repository
+        - Link to the website
     validations:
       required: false
 
   - type: textarea
     attributes:
-      label: Service Documentation (Optional - Folder Structure Only)
-      description: |
-        If using folder structure, provide a README.md content with setup instructions, features, and usage notes.
+      label: Template Description
+      description: Provide a detailed description of what this template does and when to use it
       placeholder: |
-        # Service Name
-        
-        Brief description of the service.
-        
-        ## Features
-        - Feature 1
-        - Feature 2
-        
-        ## Configuration
-        Setup instructions...
-    validations:
-      required: false
-
-  - type: textarea
-    attributes:
-      label: Resources and References
-      description: List the resources, links, or any other information that would be helpful
-      placeholder: |
-        - Link to official documentation
-        - Link to Docker Hub page
-        - Link to GitHub repository
-        - Link to website
-    validations:
-      required: false
-
-  - type: textarea
-    attributes:
-      label: Service Description
-      description: Provide a detailed description of what this service does and when to use it
-      placeholder: |
-        This service is perfect for [use case]...
+        This template is perfect for creating modern web applications with React and TypeScript...
     validations:
       required: false
 

@@ -13,20 +13,17 @@ compose-files/
 └── services/
     ├── nginx/
     │   ├── docker-compose.yml  # Main compose file
-    │   ├── template.toml       # Template metadata (optional)
     │   ├── .env.example      # Example env file (optional)
     │   └── README.md          # Service docs (optional)
     │
     └── redis/
         ├── docker-compose.yml
-        ├── template.toml
         └── .env.example
 ```
 
 ### File Formats
 
 - **docker-compose.yml**: Standard Docker Compose file with comments (ScaleTail style)
-- **template.toml**: Dokploy-style template metadata for template variables and domain configuration (optional)
 - **.env.example**: ScaleTail-style environment file with comments showing required variables (optional)
 - **README.md**: Service-specific documentation (optional)
 
@@ -61,24 +58,6 @@ Use this structure in your issue description:
 ### Optional Files (Folder Structure Only)
 
 If using folder structure, you may include:
-
-**template.toml** (if template variables are needed):
-
-```toml
-[variables]
-main_domain = "${domain}"
-service_port = "80"
-
-[config]
-[[config.domains]]
-serviceName = "nginx"
-port = 80
-host = "${main_domain}"
-path = "/"
-
-[config.env]
-NGINX_HOST = "${main_domain}"
-```
 
 **.env.example** (if environment variables are needed):
 
@@ -121,7 +100,6 @@ Before opening your issue, please verify that your submission meets these standa
 ### Folder Structure Requirements (If Using)
 
 - **docker-compose.yml**: Required - Main compose file
-- **template.toml**: Optional - Include if service needs template variables, domain configuration, or custom mounts
 - **.env.example**: Optional - Include if service has environment variables that users need to configure
 - **README.md**: Optional - Include for services that need detailed setup instructions or have special requirements
 
