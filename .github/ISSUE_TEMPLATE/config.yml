@@ -1,0 +1,12 @@
+# Issue chooser for Marketplace. Bug reports use the templates; questions and ideas go to the forum.
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Questions & help (Compose Marketplace on the HHF forum)
+    url: https://forum.hhf.technology/c/docker-deploy-tools/marketplace
+    about: Setup questions, errors and ideas for Compose Marketplace. GitHub issues are mirrored there too.
+  - name: 🗨️ Discord
+    url: https://discord.gg/HDCt9MjyMJ
+    about: Chat with the HHF community.
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/hhftechnology/Marketplace/security/advisories/new
+    about: Please report vulnerabilities privately, never in a public issue.
