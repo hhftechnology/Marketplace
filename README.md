@@ -1,5 +1,7 @@
 # Marketplace Repository
 
+[![Discuss on the HHF forum](https://img.shields.io/badge/discuss-forum.hhf.technology-5E35B1?logo=discourse&logoColor=white)](https://forum.hhf.technology/c/docker-deploy-tools/marketplace)
+
 A collection of Docker Compose files for self-hosted services, supporting both traditional flat file structure and the new folder-based structure with template support.
 
 ## Repository Structure
